@@ -1,4 +1,4 @@
-from Poll_size import *
+from config import *
 import numpy as np
 
 # 공별 설정
