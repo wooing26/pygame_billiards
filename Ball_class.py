@@ -176,7 +176,7 @@ class Ball:
 
 
     # 충돌 횟수 세기 (3구의 3쿠션)
-    def count_score(self, other1, other2):
+    def count_score(self, other1, other2, count):
         
         if self.overlaps(other1) and count[0] == 0:
             count[0] += 1
