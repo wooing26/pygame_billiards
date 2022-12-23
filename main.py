@@ -1,9 +1,9 @@
 import numpy as np
 import pygame
-from Ball_class import *
-from config import *
-from menu import Main_menu
-from playing import Playing
+from setting.Ball_class import *
+from setting.config import *
+from setting.menu import Main_menu
+from setting.playing import Playing
 
 
 # pygame 설정 
