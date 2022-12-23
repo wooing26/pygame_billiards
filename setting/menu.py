@@ -26,6 +26,7 @@ def Main_menu(menu, play):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 menu = False
+                play = False
             if event.type == pygame.MOUSEBUTTONUP:
                 mouse_up = pygame.mouse.get_pos()
         

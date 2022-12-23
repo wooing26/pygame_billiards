@@ -5,7 +5,7 @@ from setting.Ball_class import *
 from setting.spin import *
 
 
-def Playing(*ball, play):
+def Playing(*ball, menu, play):
     global count, count_num, distance_2, buttonup, buttonup2, player_turn
     
     pygame.display.set_caption("Billiard")
@@ -18,10 +18,15 @@ def Playing(*ball, play):
             if event.type == pygame.QUIT:
                 play = False
                 menu = True
+                #ball[0].pos = np.array([midpoint])
+                #ball[1].pos = np.array([midpoint[0] - 100 / screen_ratio, midpoint[1]])
+                #ball[2].pos = np.array([x_lim[1] - 100 / screen_ratio, y_lim[0] + 100 / screen_ratio])
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click = pygame.mouse.get_pos()
                 distance_0 = np.hypot((click[0] - ball_sum_pos[player_turn][0]), (click[1] - ball_sum_pos[player_turn][1]))
                 distance_1 = np.hypot((click[0] - spin_ball[0]), (click[1] - spin_ball[1]))
+                if distance_0 < ball[0].r:
+                    buttonup = (0, 0)
             if event.type == pygame.MOUSEBUTTONUP:
                 if distance_0 < ball[0].r:
                     buttonup = pygame.mouse.get_pos()

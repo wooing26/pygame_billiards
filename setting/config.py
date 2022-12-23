@@ -3,7 +3,7 @@ import pygame
 
 
 # 배경 설정
-screen_ratio = 1.3
+screen_ratio = 1
 back_size = np.array([1500, 1000]) / screen_ratio
 background = pygame.display.set_mode(back_size)
 
