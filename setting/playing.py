@@ -8,6 +8,8 @@ from setting.spin import *
 def Playing(*ball, play):
     global count, count_num, distance_2, buttonup, buttonup2, player_turn
     
+    pygame.display.set_caption("Billiard")
+
     while play:
         deltaTime = fps.tick(60)
 
