@@ -6,6 +6,9 @@ background = pygame.display.set_mode((1500, 1000))
 pygame.display.set_caption("project 3조_ver2")
 back_size = background.get_size()
 
+# 게임 프레임 설정
+fps = pygame.time.Clock()
+
 # 색
 white = ((255,255,255))
 blue = ((0,0,255))
@@ -17,8 +20,7 @@ yellow = ((255,255,0))
 blue_green = ((0,255,170))
 coffee_brown =((200,190,140))
 
-# 게임 프레임 설정
-fps = pygame.time.Clock()
+
 
 
 # 당구대 설정
@@ -28,14 +30,17 @@ height_out = 1730 / 3
 width_out = 3120 / 3
 midpoint = [back_size[0] / 2, back_size[1] * 2 / 3]
 
+
 # 당구대 안에서만 공이 움직이게 크기 설정
 x_lim = np.array([midpoint[0] - width / 2, midpoint[0] + width / 2])
 y_lim = np.array([midpoint[1] - height / 2, midpoint[1] + height / 2])
 x_out = np.array([midpoint[0] - width_out / 2, midpoint[0] + width_out / 2])
 y_out = np.array([midpoint[1] - height_out / 2, midpoint[1] + height_out / 2])
 
+
 # 당구대
 pool_wall = np.array([x_lim, y_lim])
+
 
 # 스코어 출력함수
 def Score(player1, player2):
@@ -47,3 +52,26 @@ def Score(player1, player2):
     background.blit(dashboard, ((position[0][0] + position[1][0]) / 2 -100, position[0][1] - 100))
     background.blit(player1_score, (position[0]))
     background.blit(player2_score, (position[1]))
+
+
+# 초기 스코어 [1플레이어, 2플레이어], 충돌 횟수 [공1이랑, 공2이랑, 벽이랑]
+count_score = [0, 0]
+count = [0, 0, 0]
+
+
+
+# 플레이어 턴 변경 용
+player_turn = 0     # 0 : 흰공, 1 : 노란공
+distance_2 = 0
+buttonup = (0, 0)
+buttonup2 = (0, 0)
+count_num = 0
+
+
+# overlap 상황 해결 프레임 조정
+frame_count = [0, 0, 0]
+frame_skip = 3
+
+
+# 초기 속력 제한
+speed_limit = 250
