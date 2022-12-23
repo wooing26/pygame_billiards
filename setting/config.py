@@ -3,7 +3,6 @@ import pygame
 
 # 배경 설정
 background = pygame.display.set_mode((1500, 1000))
-pygame.display.set_caption("project 3조_ver2")
 back_size = background.get_size()
 
 # 게임 프레임 설정
