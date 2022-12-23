@@ -1,6 +1,6 @@
 import numpy as np
 import pygame
-from config import *
+from setting.config import *
 
 # 스핀용 공 설정 (UI)
 spin_ball = [x_out[0] + 150, y_out[0] - 200]

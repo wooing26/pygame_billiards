@@ -1,4 +1,4 @@
-from config import *
+from setting.config import *
 import numpy as np
 
 # 공별 설정
