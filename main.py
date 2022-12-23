@@ -17,8 +17,8 @@ ball_3 = Ball(x_lim[1] - 100, y_lim[0] + 100, 0.0, 0.0, 0.0, 0.0, 0.0, red)
 
 # 게임 실행
 menu, play = True, False
-
-play = Main_menu(menu, play)
-Playing(ball_1, ball_2, ball_3, play = play)
+while True in (menu, play):
+    menu, play = Main_menu(menu, play)
+    menu, play = Playing(ball_1, ball_2, ball_3, play = play)
 
 pygame.quit()

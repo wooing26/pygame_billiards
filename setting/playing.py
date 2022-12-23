@@ -17,6 +17,7 @@ def Playing(*ball, play):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 play = False
+                menu = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click = pygame.mouse.get_pos()
                 distance_0 = np.hypot((click[0] - ball_sum_pos[player_turn][0]), (click[1] - ball_sum_pos[player_turn][1]))
@@ -130,12 +131,12 @@ def Playing(*ball, play):
                 pygame.draw.line(background, red, ball_sum_pos[player_turn], buttonup, width=4)
         
         # spin input UI
-        pygame.draw.circle(background, white, spin_ball, 150)
-        pygame.draw.circle(background, red, spin_ball, 10, 2)
+        pygame.draw.circle(background, white, spin_ball, spin_radius)
+        pygame.draw.circle(background, red, spin_ball, 10 / screen_ratio, 2)
         if np.hypot((spin_ball[0] - mouse_pos[0]), (spin_ball[1] - mouse_pos[1])) <= spin_radius:
-            pygame.draw.circle(background, blue, mouse_pos, 10, 2)
+            pygame.draw.circle(background, blue, mouse_pos, 10 / screen_ratio, 2)
         if np.any([ball[0].v, ball[1].v, ball[2].v] != np.array([0, 0])):
-            pygame.draw.circle(background, blue, buttonup2, 10, 2)
+            pygame.draw.circle(background, blue, buttonup2, 10 / screen_ratio, 2)
 
         # 공
         ball[0].draw()
@@ -144,3 +145,5 @@ def Playing(*ball, play):
         
         Score(count_score[0], count_score[1])       # 스코어 보드
         pygame.display.update()
+
+    return menu, play

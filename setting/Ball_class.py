@@ -3,7 +3,8 @@ import numpy as np
 
 # 공별 설정
 class Ball:
-    def __init__(self, x, y, vx, vy, spin_x, spin_y, spin_z, color, radius = 61.5 / 3, frict = 0.02, mass = 210 / 27):
+    def __init__(self, x, y, vx, vy, spin_x, spin_y, spin_z, color,
+     radius = 61.5 / 3 / screen_ratio, frict = 0.02, mass = 210 / 27 / (screen_ratio**3)):
         
         self.pos = np.array([x, y])
         self.v = np.array([vx, vy])

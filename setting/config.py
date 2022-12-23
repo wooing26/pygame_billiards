@@ -1,9 +1,12 @@
 import numpy as np
 import pygame
 
+
 # 배경 설정
-background = pygame.display.set_mode((1500, 1000))
-back_size = background.get_size()
+screen_ratio = 1.3
+back_size = np.array([1500, 1000]) / screen_ratio
+background = pygame.display.set_mode(back_size)
+
 
 # 게임 프레임 설정
 fps = pygame.time.Clock()
@@ -23,10 +26,10 @@ coffee_brown =((200,190,140))
 
 
 # 당구대 설정
-height = 1422 / 3
-width = 2844 / 3
-height_out = 1730 / 3
-width_out = 3120 / 3
+height = 1422 / 3 / screen_ratio
+width = 2844 / 3 / screen_ratio
+height_out = 1730 / 3 / screen_ratio
+width_out = 3120 / 3 / screen_ratio
 midpoint = [back_size[0] / 2, back_size[1] * 2 / 3]
 
 
@@ -43,12 +46,14 @@ pool_wall = np.array([x_lim, y_lim])
 
 # 스코어 출력함수
 def Score(player1, player2):
-    position = [[(3 * midpoint[0] + x_out[1]) / 4, y_out[0] - 150], [(midpoint[0] + 3 * x_out[1]) / 4, y_out[0] - 150]]
-    font = pygame.font.SysFont('notosanscjkkrblack', 100)
+    position = [[(3 * midpoint[0] + x_out[1]) / 4, y_out[0] - 150 / screen_ratio],
+     [(midpoint[0] + 3 * x_out[1]) / 4, y_out[0] - 150 / screen_ratio]]
+
+    font = pygame.font.SysFont('notosanscjkkrblack', int(100 / screen_ratio))
     dashboard = font.render("SCORE", True, red)
     player1_score = font.render(str(player1), True, red)
     player2_score = font.render(str(player2), True, red)
-    background.blit(dashboard, ((position[0][0] + position[1][0]) / 2 -100, position[0][1] - 100))
+    background.blit(dashboard, ((position[0][0] + position[1][0]) / 2 -100 / screen_ratio, position[0][1] - 100 / screen_ratio))
     background.blit(player1_score, (position[0]))
     background.blit(player2_score, (position[1]))
 
@@ -73,4 +78,4 @@ frame_skip = 3
 
 
 # 초기 속력 제한
-speed_limit = 250
+speed_limit = 250 / screen_ratio
