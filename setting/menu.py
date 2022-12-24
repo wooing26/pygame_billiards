@@ -5,11 +5,12 @@ from setting.config import *
 
 #pygame.init()
 
-def Main_menu(menu, play):
-    global back_size
+def Main_menu(menu, play, back_size):
     mouse_up = (0, 0)
 
     pygame.display.set_caption("Main menu")
+
+    background = pygame.display.set_mode(back_size)
 
     font = pygame.font.SysFont('notosansmonocjkkrregular', int(100 / screen_ratio))
     img_play0 = font.render('Play', True, blue)
@@ -30,10 +31,10 @@ def Main_menu(menu, play):
             if event.type == pygame.MOUSEBUTTONUP:
                 mouse_up = pygame.mouse.get_pos()
         
-        if (play_pos[0] <= mouse_up[0] <= play_pos[0] + 145) and (play_pos[1] <= mouse_up[1] <= play_pos[1] + 75):
+        if (play_pos[0] <= mouse_up[0] <= play_pos[0] + 145 / screen_ratio) and (play_pos[1] <= mouse_up[1] <= play_pos[1] + 75 / screen_ratio):
             play = True
             menu = False
-        if (exit_pos[0] <= mouse_up[0] <= exit_pos[0] + 145) and (exit_pos[1] <= mouse_up[1] <= exit_pos[1] + 75):
+        if (exit_pos[0] <= mouse_up[0] <= exit_pos[0] + 145 / screen_ratio) and (exit_pos[1] <= mouse_up[1] <= exit_pos[1] + 75 / screen_ratio):
             play = False
             menu = False
 
@@ -51,8 +52,9 @@ def Main_menu(menu, play):
             background.blit(img_exit0, exit_pos)
         #pygame.draw.line(background, red, (mid[0], 0), (mid[0], back_size[1]))
         pygame.display.update()
-
+    
     return menu, play
+
     
 #Main_menu(menu=True, play=False)
 #pygame.quit()

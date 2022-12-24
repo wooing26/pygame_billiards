@@ -5,10 +5,23 @@ from setting.Ball_class import *
 from setting.spin import *
 
 
-def Playing(*ball, menu, play):
-    global count, count_num, distance_2, buttonup, buttonup2, player_turn
+def Playing(*ball, menu, play, back_size):
     
     pygame.display.set_caption("Billiard")
+
+    background = pygame.display.set_mode(back_size)
+
+    # 밑의 상수들을 config.py에 넣어놓으면 menu에 돌아갔다가 play시 reset 안됨
+    # 초기 스코어 [1플레이어, 2플레이어], 충돌 횟수 [공1이랑, 공2이랑, 벽이랑]
+    count_score = [0, 0]
+    count = [0, 0, 0]
+
+    # 플레이어 턴 변경 용
+    player_turn = 0     # 0 : 흰공, 1 : 노란공
+    distance_2 = 0
+    buttonup = (0, 0)
+    buttonup2 = (0, 0)
+    count_num = 0
 
     while play:
         deltaTime = fps.tick(60)
@@ -18,9 +31,6 @@ def Playing(*ball, menu, play):
             if event.type == pygame.QUIT:
                 play = False
                 menu = True
-                #ball[0].pos = np.array([midpoint])
-                #ball[1].pos = np.array([midpoint[0] - 100 / screen_ratio, midpoint[1]])
-                #ball[2].pos = np.array([x_lim[1] - 100 / screen_ratio, y_lim[0] + 100 / screen_ratio])
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click = pygame.mouse.get_pos()
                 distance_0 = np.hypot((click[0] - ball_sum_pos[player_turn][0]), (click[1] - ball_sum_pos[player_turn][1]))
@@ -150,5 +160,6 @@ def Playing(*ball, menu, play):
         
         Score(count_score[0], count_score[1])       # 스코어 보드
         pygame.display.update()
-
+    
+    
     return menu, play

@@ -2,10 +2,9 @@ import numpy as np
 import pygame
 
 
-# 배경 설정
+# 배경 기본 설정
 screen_ratio = 1
 back_size = np.array([1500, 1000]) / screen_ratio
-background = pygame.display.set_mode(back_size)
 
 
 # 게임 프레임 설정
@@ -21,6 +20,9 @@ orange = ((255,100,10))
 yellow = ((255,255,0))
 blue_green = ((0,255,170))
 coffee_brown =((200,190,140))
+moon_glow = ((235,245,255))
+light_gray = ((200,200,200))
+dark_gray = ((50,50,50))
 
 
 
@@ -57,19 +59,6 @@ def Score(player1, player2):
     background.blit(player1_score, (position[0]))
     background.blit(player2_score, (position[1]))
 
-
-# 초기 스코어 [1플레이어, 2플레이어], 충돌 횟수 [공1이랑, 공2이랑, 벽이랑]
-count_score = [0, 0]
-count = [0, 0, 0]
-
-
-
-# 플레이어 턴 변경 용
-player_turn = 0     # 0 : 흰공, 1 : 노란공
-distance_2 = 0
-buttonup = (0, 0)
-buttonup2 = (0, 0)
-count_num = 0
 
 
 # overlap 상황 해결 프레임 조정
