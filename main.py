@@ -16,10 +16,22 @@ ball_2 = Ball(midpoint[0] - 100 / screen_ratio, midpoint[1], 0.0, 0.0, 0.0, 0.0,
 ball_3 = Ball(x_lim[1] - 100 / screen_ratio, y_lim[0] + 100 / screen_ratio, 0.0, 0.0, 0.0, 0.0, 0.0, red)
 
 # 게임 실행
-menu, play, set = True, True, True
+menu, play, set = True, True, False
+
 while True in (menu, play, set):
-    menu, play = Main_menu(menu, play)
-    if play:
-        menu, play = Playing(ball_1, ball_2, ball_3, menu = menu, play = play)
+    print("1", menu, play, set)
+    menu, play = Main_menu(menu, play, back_size)
+    print("2", menu, play, set)
+    menu, play = Playing(ball_1, ball_2, ball_3, menu=menu, play=play, back_size=back_size)
+    print("3", menu, play, set)
+
+    # 위치 초기화 용
+    if not play:
+        ball_1.v = np.array([0.0, 0.0])
+        ball_2.v = np.array([0.0, 0.0])
+        ball_3.v = np.array([0.0, 0.0])
+        ball_1.pos = np.array([midpoint[0], midpoint[1]])
+        ball_2.pos = np.array([midpoint[0] - 100 / screen_ratio, midpoint[1]])
+        ball_3.pos = np.array([x_lim[1] - 100 / screen_ratio, y_lim[0] + 100 / screen_ratio])
 
 pygame.quit()
