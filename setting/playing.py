@@ -25,6 +25,8 @@ def Playing(*ball, menu, play, screen_ratio):
     buttonup2 = (0, 0)
     count_num = 0
 
+    
+
     while play:
         deltaTime = fps.tick(60)
 
