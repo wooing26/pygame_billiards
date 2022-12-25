@@ -32,6 +32,7 @@ def Setting(menu, set):
             if event.type == pygame.QUIT:
                 set = False
                 menu = False
+                play = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_down = pygame.mouse.get_pos()
             if event.type == pygame.MOUSEBUTTONUP:
@@ -45,6 +46,7 @@ def Setting(menu, set):
         if (back_pos[0] <= mouse_up[0] <= back_pos[0] + 165) and (back_pos[1] <= mouse_up[1] <= back_pos[1] + 60):
             set = False
             menu = True
+            play = False
 
         if (ratio_pos[0] - 15 <= mouse_down[0] <= ratio_pos[0] + 15) and (ratio_pos[1] <= mouse_down[1] <= ratio_pos[1] + 70):
             mouse_down = np.array(mouse_down)

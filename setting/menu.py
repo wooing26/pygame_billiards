@@ -40,9 +40,11 @@ def Main_menu(menu, play, set, screen_ratio):
         if (play_pos[0] <= mouse_up[0] <= play_pos[0] + 145 / screen_ratio) and (play_pos[1] <= mouse_up[1] <= play_pos[1] + 75 / screen_ratio):
             play = True
             menu = False
+            set = False
         if (setting_pos[0] <= mouse_up[0] <= setting_pos[0] + 250 / screen_ratio) and (setting_pos[1] <= mouse_up[1] <= setting_pos[1] + 75 / screen_ratio):
             set = True
             menu = False
+            play = False
         if (exit_pos[0] <= mouse_up[0] <= exit_pos[0] + 145 / screen_ratio) and (exit_pos[1] <= mouse_up[1] <= exit_pos[1] + 75 / screen_ratio):
             play = False
             menu = False
@@ -58,7 +60,7 @@ def Main_menu(menu, play, set, screen_ratio):
             background.blit(img_play1, play_pos)
         else:
             background.blit(img_play0, play_pos)
-        if (setting_pos[0] <= mouse_pos[0] <= setting_pos[0] + 145 / screen_ratio) and (setting_pos[1] <= mouse_pos[1] <= setting_pos[1] + 75 / screen_ratio):
+        if (setting_pos[0] <= mouse_pos[0] <= setting_pos[0] + 250 / screen_ratio) and (setting_pos[1] <= mouse_pos[1] <= setting_pos[1] + 75 / screen_ratio):
             background.blit(img_set1, setting_pos)
         else:
             background.blit(img_set0, setting_pos)
@@ -69,6 +71,7 @@ def Main_menu(menu, play, set, screen_ratio):
         pygame.draw.line(background, red, (mid[0], 0), (mid[0], back_size[1]))
         pygame.display.update()
     
+
     return menu, play, set
 
     
