@@ -6,10 +6,11 @@ from setting.config import *
 #pygame.init()
 
 def Main_menu(menu, play, set, screen_ratio):
-    global back_size
+
     mouse_up = (0, 0)
 
     pygame.display.set_caption("Main menu")
+    back_size = np.array([1500, 1000])
 
     back_size = back_size / screen_ratio
     background = pygame.display.set_mode(back_size)

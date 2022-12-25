@@ -1,16 +1,15 @@
 import numpy as np
 import pygame
-from setting.config import *
+import setting.config as config
 from setting.Ball_class import *
 from setting.spin import *
 
 
 def Playing(*ball, menu, play, screen_ratio):
-    global back_size
 
     pygame.display.set_caption("Billiard")
 
-    back_size = back_size / screen_ratio
+    back_size = config.back_size / screen_ratio
     background = pygame.display.set_mode(back_size)
 
     # 밑의 상수들을 config.py에 넣어놓으면 menu에 돌아갔다가 play시 reset 안됨
@@ -25,6 +24,15 @@ def Playing(*ball, menu, play, screen_ratio):
     buttonup2 = (0, 0)
     count_num = 0
 
+    # 사이즈 조정
+    x_lim = config.x_lim / screen_ratio
+    y_lim = config.y_lim / screen_ratio
+    x_out = config.x_out / screen_ratio
+    y_out = config.y_out / screen_ratio
+    pool_wall = np.array([x_lim, y_lim])
+
+    spin_ball = config.spin_ball / screen_ratio
+    spin_radius = config.spin_radius / screen_ratio
     
 
     while play:
@@ -72,7 +80,7 @@ def Playing(*ball, menu, play, screen_ratio):
 
                 v_0 = (ball_sum_pos[player_turn] - buttonup) / np.linalg.norm(ball_sum_pos[player_turn] - buttonup) * distance_2
                 if buttonup2 != (0, 0):
-                    r_imp = Get_spin(buttonup2, v_0)
+                    r_imp = Get_spin(buttonup2, v_0, spin_ball)
                     ball_sum_spin[player_turn] += np.cross(r_imp, v_0) * ball[0].r / spin_radius / 8 #상수추가 필요할 수도 있음
                     ball_sum_v[player_turn] += np.array(v_0) / 15   #초기 속도 줄이기
                     count_num = 1

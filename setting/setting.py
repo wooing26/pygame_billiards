@@ -5,8 +5,8 @@ from setting.config import *
 
 
 
-def Setting(menu, set):
-    global back_size, screen_ratio
+def Setting(menu, set, screen_ratio):
+    global back_size
     mouse_up = (0, 0)
     mouse_down = (0, 0)
     drag = (0, 0)
@@ -15,7 +15,6 @@ def Setting(menu, set):
     background = pygame.display.set_mode(back_size)
 
     mid = np.array(back_size) / 2
-    set_ratio = np.linspace(1, 2, 100)
 
     font = pygame.font.SysFont('notosansmonocjkkrregular', 100)
     img_back0 = font.render('Back', True, blue)
@@ -75,7 +74,7 @@ def Setting(menu, set):
         pygame.draw.line(background, red, (mid[0], 0), (mid[0], back_size[1]))
         pygame.display.update()
 
-    back_size = back_size / screen_ratio
+    
     return menu, set, screen_ratio
 
 #pygame.init()

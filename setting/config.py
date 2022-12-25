@@ -3,8 +3,7 @@ import pygame
 
 
 # 배경 기본 설정
-screen_ratio = 1
-back_size = np.array([1500, 1000]) / screen_ratio
+back_size = np.array([1500, 1000])
 
 
 # 게임 프레임 설정
@@ -28,10 +27,10 @@ dark_gray = ((50,50,50))
 
 
 # 당구대 설정
-height = 1422 / 3 / screen_ratio
-width = 2844 / 3 / screen_ratio
-height_out = 1730 / 3 / screen_ratio
-width_out = 3120 / 3 / screen_ratio
+height = 1422 / 3
+width = 2844 / 3
+height_out = 1730 / 3
+width_out = 3120 / 3
 midpoint = [back_size[0] / 2, back_size[1] * 2 / 3]
 
 
@@ -60,6 +59,9 @@ def Score(player1, player2, background, screen_ratio):
     background.blit(player2_score, (position[1]))
 
 
+# 스핀용 공 설정 (UI)
+spin_ball = np.array([x_out[0] + 150, y_out[0] - 200])
+spin_radius = 150
 
 # overlap 상황 해결 프레임 조정
 frame_count = [0, 0, 0]
@@ -67,4 +69,4 @@ frame_skip = 3
 
 
 # 초기 속력 제한
-speed_limit = 250 / screen_ratio
+speed_limit = 250
