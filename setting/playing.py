@@ -5,10 +5,12 @@ from setting.Ball_class import *
 from setting.spin import *
 
 
-def Playing(*ball, menu, play, back_size):
-    
+def Playing(*ball, menu, play, screen_ratio):
+    global back_size
+
     pygame.display.set_caption("Billiard")
 
+    back_size = back_size / screen_ratio
     background = pygame.display.set_mode(back_size)
 
     # 밑의 상수들을 config.py에 넣어놓으면 menu에 돌아갔다가 play시 reset 안됨
@@ -154,11 +156,11 @@ def Playing(*ball, menu, play, back_size):
             pygame.draw.circle(background, blue, buttonup2, 10 / screen_ratio, 2)
 
         # 공
-        ball[0].draw()
-        ball[1].draw()
-        ball[2].draw()
+        ball[0].draw(background)
+        ball[1].draw(background)
+        ball[2].draw(background)
         
-        Score(count_score[0], count_score[1])       # 스코어 보드
+        Score(count_score[0], count_score[1], background, screen_ratio)       # 스코어 보드
         pygame.display.update()
     
     

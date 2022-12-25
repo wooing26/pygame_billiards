@@ -67,7 +67,7 @@ class Ball:
 
 
     # 공 그리기
-    def draw(self):
+    def draw(self, background):
         
         circle = pygame.draw.circle(background, self.col, self.pos, self.r)
         return circle

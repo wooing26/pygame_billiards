@@ -47,7 +47,7 @@ pool_wall = np.array([x_lim, y_lim])
 
 
 # 스코어 출력함수
-def Score(player1, player2):
+def Score(player1, player2, background, screen_ratio):
     position = [[(3 * midpoint[0] + x_out[1]) / 4, y_out[0] - 150 / screen_ratio],
      [(midpoint[0] + 3 * x_out[1]) / 4, y_out[0] - 150 / screen_ratio]]
 

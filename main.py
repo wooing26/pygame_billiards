@@ -4,6 +4,7 @@ from setting.Ball_class import *
 from setting.config import *
 from setting.menu import Main_menu
 from setting.playing import Playing
+from setting.setting import Setting
 
 
 # pygame 설정 
@@ -20,9 +21,9 @@ menu, play, set = True, True, False
 
 while True in (menu, play, set):
     print("1", menu, play, set)
-    menu, play = Main_menu(menu, play, back_size)
-    print("2", menu, play, set)
-    menu, play = Playing(ball_1, ball_2, ball_3, menu=menu, play=play, back_size=back_size)
+    menu, play, set = Main_menu(menu, play, set, screen_ratio)
+    menu, set, screen_ratio = Setting(menu, set)
+    menu, play = Playing(ball_1, ball_2, ball_3, menu=menu, play=play, screen_ratio=screen_ratio)
     print("3", menu, play, set)
 
     # 위치 초기화 용
