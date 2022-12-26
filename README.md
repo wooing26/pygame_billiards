@@ -1,4 +1,4 @@
-# pygame_billiard
+# pygame_billiards
  
 ## 개요
     - 학교 수업에서 진행한 프로젝트입니다.
