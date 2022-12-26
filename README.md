@@ -26,4 +26,4 @@
     - 두 공을 모두 부딪치기 전에 당구대 벽에 최소 3번 부딪쳐야 합니다.
 
 ## 협업 (물리학과)
-    - 안창민 [chanamon2]https://github.com/chanamon2
+    - 안창민 [chanamon2](https://github.com/chanamon2)
