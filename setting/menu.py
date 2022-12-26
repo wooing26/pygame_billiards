@@ -69,7 +69,7 @@ def Main_menu(menu, play, set, screen_ratio):
             background.blit(img_exit1, exit_pos)
         else:
             background.blit(img_exit0, exit_pos)
-        pygame.draw.line(background, red, (mid[0], 0), (mid[0], back_size[1]))
+            
         pygame.display.update()
     
 

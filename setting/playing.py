@@ -33,7 +33,20 @@ def Playing(*ball, menu, play, screen_ratio):
 
     spin_ball = config.spin_ball / screen_ratio
     spin_radius = config.spin_radius / screen_ratio
+
+    position = config.position / screen_ratio
+
+    ball[0].r = config.ball_r / screen_ratio
+    ball[1].r = config.ball_r / screen_ratio
+    ball[2].r = config.ball_r / screen_ratio
     
+    ball[0].m = config.ball_m / (screen_ratio**3)
+    ball[1].m = config.ball_m / (screen_ratio**3)
+    ball[2].m = config.ball_m / (screen_ratio**3)
+
+    ball[0].pos = config.ball1_pos / screen_ratio
+    ball[1].pos = config.ball2_pos / screen_ratio
+    ball[2].pos = config.ball3_pos / screen_ratio
 
     while play:
         deltaTime = fps.tick(60)
@@ -110,9 +123,9 @@ def Playing(*ball, menu, play, screen_ratio):
 
 
         # 공 움직임 (벽 충돌 포함)
-        ball[0].advance()
-        ball[1].advance()
-        ball[2].advance()
+        ball[0].advance(pool_wall)
+        ball[1].advance(pool_wall)
+        ball[2].advance(pool_wall)
 
         
 
@@ -135,9 +148,9 @@ def Playing(*ball, menu, play, screen_ratio):
         
         # 공끼리 충돌 횟수 세기
         if player_turn == 0:
-            ball[0].count_score(ball[1], ball[2], count)
+            ball[0].count_score(ball[1], ball[2], count, pool_wall)
         elif player_turn == 1:
-            ball[1].count_score(ball[0], ball[2], count)
+            ball[1].count_score(ball[0], ball[2], count, pool_wall)
 
 
         
@@ -170,7 +183,7 @@ def Playing(*ball, menu, play, screen_ratio):
         ball[1].draw(background)
         ball[2].draw(background)
         
-        Score(count_score[0], count_score[1], background, screen_ratio)       # 스코어 보드
+        Score(count_score[0], count_score[1], background, screen_ratio, position)       # 스코어 보드
         pygame.display.update()
     
     

@@ -45,11 +45,18 @@ y_out = np.array([midpoint[1] - height_out / 2, midpoint[1] + height_out / 2])
 pool_wall = np.array([x_lim, y_lim])
 
 
-# 스코어 출력함수
-def Score(player1, player2, background, screen_ratio):
-    position = [[(3 * midpoint[0] + x_out[1]) / 4, y_out[0] - 150 / screen_ratio],
-     [(midpoint[0] + 3 * x_out[1]) / 4, y_out[0] - 150 / screen_ratio]]
+# 공 초기 설정
+ball_r = 61.5 / 3
+ball_m = 210 / 27
+ball1_pos = np.array(midpoint)
+ball2_pos = np.array([midpoint[0] - 100, midpoint[1]])
+ball3_pos = np.array([x_lim[1] - 100, y_lim[0] + 100])
 
+position = np.array([[(3 * midpoint[0] + x_out[1]) / 4, y_out[0] - 150],
+     [(midpoint[0] + 3 * x_out[1]) / 4, y_out[0] - 150]])
+
+# 스코어 출력함수
+def Score(player1, player2, background, screen_ratio, position):
     font = pygame.font.SysFont('notosanscjkkrblack', int(100 / screen_ratio))
     dashboard = font.render("SCORE", True, red)
     player1_score = font.render(str(player1), True, red)
@@ -62,6 +69,7 @@ def Score(player1, player2, background, screen_ratio):
 # 스핀용 공 설정 (UI)
 spin_ball = np.array([x_out[0] + 150, y_out[0] - 200])
 spin_radius = 150
+
 
 # overlap 상황 해결 프레임 조정
 frame_count = [0, 0, 0]

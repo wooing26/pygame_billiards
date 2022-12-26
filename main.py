@@ -18,9 +18,10 @@ ball_3 = Ball(x_lim[1] - 100, y_lim[0] + 100, 0.0, 0.0, 0.0, 0.0, 0.0, red)
 
 # 게임 실행
 menu, play, set = True, True, False
+screen_ratio = 1
 
 while True in (menu, play, set):
-    menu, set, screen_ratio = Setting(menu, set, screen_ratio=1)
+    menu, set, screen_ratio = Setting(menu, set, screen_ratio)
     menu, play, set = Main_menu(menu, play, set, screen_ratio)
     menu, play = Playing(ball_1, ball_2, ball_3, menu=menu, play=play, screen_ratio=screen_ratio)
 

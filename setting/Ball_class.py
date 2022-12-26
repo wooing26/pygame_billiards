@@ -73,19 +73,19 @@ class Ball:
         return circle
     
     # 벽 충돌 상황
-    def limit_x0(self):
+    def limit_x0(self, pool_wall):
         return self.x - self.r <= pool_wall[0][0]
-    def limit_x1(self):
+    def limit_x1(self, pool_wall):
         return self.x + self.r >= pool_wall[0][1]
-    def limit_y0(self):
+    def limit_y0(self, pool_wall):
         return self.y - self.r <= pool_wall[1][0]
-    def limit_y1(self):
+    def limit_y1(self, pool_wall):
         return self.y + self.r >= pool_wall[1][1]
     
 
 
     # 공의 움직임 (공끼리 충돌 제외)
-    def advance(self, e_w = 0.8):
+    def advance(self, pool_wall, e_w = 0.8):
 
         # 마찰에 의한 속도 감소
         if np.all(self.v != 0):
@@ -114,19 +114,19 @@ class Ball:
 
 
         # 벽과 충돌 상황
-        if self.limit_x0():
+        if self.limit_x0(pool_wall):
             self.x = pool_wall[0][0] + self.r
             change_velocity(np.array([1, 0, 0]))
 
-        if self.limit_x1():
+        if self.limit_x1(pool_wall):
             self.x = pool_wall[0][1] - self.r
             change_velocity(np.array([-1, 0, 0]))
 
-        if self.limit_y0():
+        if self.limit_y0(pool_wall):
             self.y = pool_wall[1][0] + self.r
             change_velocity(np.array([0, 1, 0]))
             
-        if self.limit_y1():
+        if self.limit_y1(pool_wall):
             self.y = pool_wall[1][1] - self.r
             change_velocity(np.array([0, -1, 0]))
     
@@ -177,17 +177,17 @@ class Ball:
 
 
     # 충돌 횟수 세기 (3구의 3쿠션)
-    def count_score(self, other1, other2, count):
+    def count_score(self, other1, other2, count, pool_wall):
         
         if self.overlaps(other1) and count[0] == 0:
             count[0] += 1
         if self.overlaps(other2) and count[1] == 0:
             count[1] += 1
-        if self.limit_x0() and count[2] < 3 and count[:2] != [1, 1]:
+        if self.limit_x0(pool_wall) and count[2] < 3 and count[:2] != [1, 1]:
             count[2] += 1
-        if self.limit_x1() and count[2] < 3 and count[:2] != [1, 1]:
+        if self.limit_x1(pool_wall) and count[2] < 3 and count[:2] != [1, 1]:
             count[2] += 1
-        if self.limit_y0() and count[2] < 3 and count[:2] != [1, 1]:
+        if self.limit_y0(pool_wall) and count[2] < 3 and count[:2] != [1, 1]:
             count[2] += 1
-        if self.limit_y1() and count[2] < 3 and count[:2] != [1, 1]:
+        if self.limit_y1(pool_wall) and count[2] < 3 and count[:2] != [1, 1]:
             count[2] += 1

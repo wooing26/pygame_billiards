@@ -71,7 +71,7 @@ def Setting(menu, set, screen_ratio):
         
         pygame.draw.rect(background, orange, [ratio_pos[0] - 15, ratio_pos[1], 30, 70])
         pygame.draw.line(background, light_gray, (mid[0] - 500, ratio_pos[1] + 35), (mid[0] + 500, ratio_pos[1] + 35), width=4)
-        pygame.draw.line(background, red, (mid[0], 0), (mid[0], back_size[1]))
+        
         pygame.display.update()
 
     
