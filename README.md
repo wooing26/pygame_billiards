@@ -1,5 +1,7 @@
 # pygame_billiards
- 
+
+https://user-images.githubusercontent.com/104512612/210162261-5721868a-eb90-4bc8-8053-9ab2a970a32e.mp4
+
 ## 개요
     - 학교 수업에서 진행한 프로젝트입니다.
     - 물리와 프로그래밍을 합친 부분을 고려하다 pygame으로 당구 게임을 제작하는 것이 좋다고 생각하여 제작하게 되었습니다.
