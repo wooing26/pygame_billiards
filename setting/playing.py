@@ -91,7 +91,7 @@ def Playing(*ball, menu, play, screen_ratio):
                 if distance_2 >= speed_limit:
                     distance_2 = speed_limit
 
-                v_0 = (ball_sum_pos[player_turn] - buttonup) / np.linalg.norm(ball_sum_pos[player_turn] - buttonup) * distance_2
+                v_0 = (ball_sum_pos[player_turn] - buttonup) / np.linalg.norm(ball_sum_pos[player_turn] - buttonup) * distance_2 * (screen_ratio**2)
                 if buttonup2 != (0, 0):
                     r_imp = Get_spin(buttonup2, v_0, spin_ball)
                     ball_sum_spin[player_turn] += np.cross(r_imp, v_0) * ball[0].r / spin_radius / 8 #상수추가 필요할 수도 있음
