@@ -53,7 +53,7 @@ def Main_menu(menu, play, set, screen_ratio):
         
 
         background.fill(black)
-        #if mouse_pos
+        
         play_rect = pygame.draw.rect(background, white, [play_pos[0], play_pos[1], 145 / screen_ratio, 75 / screen_ratio])
         set_rect = pygame.draw.rect(background, white, [setting_pos[0], setting_pos[1], 250 / screen_ratio, 75 / screen_ratio])
         exit_rect = pygame.draw.rect(background, white, [exit_pos[0], exit_pos[1], 145 / screen_ratio, 75 / screen_ratio])
