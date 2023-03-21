@@ -2,7 +2,7 @@ import numpy as np
 import pygame
 from setting.config import *
 #from config import *
-
+#이승원
 
 
 def Setting(menu, set, screen_ratio):
