@@ -30,3 +30,4 @@ https://user-images.githubusercontent.com/104512612/210162261-5721868a-eb90-4bc8
 ## 협업 (물리학과)
 - 김민상
 - 안창민 [chanamon2](https://github.com/chanamon2)
+- 이승원 [SuengWon930](https://github.com/SeungWon930)
