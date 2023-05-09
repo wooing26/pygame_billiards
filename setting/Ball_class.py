@@ -85,7 +85,7 @@ class Ball:
 
 
     # 공의 움직임 (공끼리 충돌 제외)
-    def advance(self, pool_wall, e_w = 0.8):
+    def advance(self, pool_wall):
 
         # 마찰에 의한 속도 감소
         if np.all(self.v != 0):
