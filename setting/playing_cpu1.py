@@ -5,7 +5,7 @@ from setting.Ball_class import *
 from setting.spin import *
 
 
-def Playing(*ball, menu, play, screen_ratio):
+def Playing_cpu1(*ball, menu, play, screen_ratio):
 
     pygame.display.set_caption("Billiard")
 
@@ -58,13 +58,13 @@ def Playing(*ball, menu, play, screen_ratio):
             if event.type == pygame.QUIT:
                 play = False
                 menu = True
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and player_turn == 1:
                 click = pygame.mouse.get_pos()
-                distance_0 = np.hypot((click[0] - ball_sum_pos[player_turn][0]), (click[1] - ball_sum_pos[player_turn][1]))
+                distance_0 = np.hypot((click[0] - ball[1].pos[0]), (click[1] - ball[1].pos[1]))
                 distance_1 = np.hypot((click[0] - spin_ball[0]), (click[1] - spin_ball[1]))
                 if distance_0 < ball[0].r:
                     buttonup = (0, 0)
-            if event.type == pygame.MOUSEBUTTONUP:
+            if event.type == pygame.MOUSEBUTTONUP and player_turn == 1:
                 if distance_0 < ball[0].r:
                     buttonup = pygame.mouse.get_pos()
                     distance_2 = np.hypot((click[0] - buttonup[0]), (click[1] - buttonup[1]))
@@ -78,6 +78,16 @@ def Playing(*ball, menu, play, screen_ratio):
             ball_sum_v = [ball[0].v, ball[1].v]
             ball_sum_pos = [ball[0].pos, ball[1].pos]
             ball_sum_spin = [ball[0].spin, ball[1].spin]
+
+            if player_turn == 0:
+                # 컴퓨터에게 필요한 값들
+                distance_2 = np.random.rand() * speed_limit
+                spin_dis = np.random.rand() * spin_radius
+                theta = np.random.rand() * (2 * np.pi)
+                theta2 = np.random.rand() * (2 * np.pi)
+                buttonup = (ball[0].pos[0] + distance_2 * np.cos(theta), ball[0].pos[1] + distance_2 * np.sin(theta))
+                buttonup2 = (spin_ball[0] + spin_dis * np.cos(theta2), spin_ball[1] + spin_dis * np.sin(theta2))
+
 
             if count == [1, 1, 3]:      # 점수 +1 상황, 턴이 바뀌지 않음
                 count_score[player_turn] += 1
@@ -93,8 +103,10 @@ def Playing(*ball, menu, play, screen_ratio):
                 if distance_2 >= speed_limit:
                     distance_2 = speed_limit
 
+                
                 v_0 = (ball_sum_pos[player_turn] - buttonup) / np.linalg.norm(ball_sum_pos[player_turn] - buttonup) * distance_2 * (screen_ratio**2)
                 
+                    
                 if buttonup2 != (0, 0):
                     r_imp = Get_spin(buttonup2, v_0, spin_ball)
                     ball_sum_spin[player_turn] += np.cross(r_imp, v_0) * ball[0].r / spin_radius / 8 #상수추가 필요할 수도 있음
@@ -169,7 +181,8 @@ def Playing(*ball, menu, play, screen_ratio):
         # velocity input UI
         if np.all([ball[0].v, ball[1].v, ball[2].v] == np.array([0, 0])) and count_num == 0:
             if buttonup == (0, 0):
-                pygame.draw.line(background, red, ball_sum_pos[player_turn], mouse_pos, width=4)
+                if player_turn == 1:
+                    pygame.draw.line(background, red, ball_sum_pos[player_turn], mouse_pos, width=4)
             else:
                 pygame.draw.line(background, red, ball_sum_pos[player_turn], buttonup, width=4)
         
